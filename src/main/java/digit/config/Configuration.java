@@ -13,6 +13,10 @@ import org.springframework.stereotype.Component;
 import jakarta.annotation.PostConstruct;
 import java.util.TimeZone;
 
+/**
+ * Central configuration class for eGov application endpoints and services
+ * Manages all external service integration points and connection details
+ */
 @Component
 @Data
 @Import({TracerConfiguration.class})
@@ -22,71 +26,64 @@ import java.util.TimeZone;
 @Getter
 public class Configuration {
 
-
-    // User Config
+    // User service integration points
     @Value("${egov.user.host}")
-    private String userHost;
+    private String userServiceBaseUrl;
 
     @Value("${egov.user.context.path}")
-    private String userContextPath;
+    private String userServiceContextPath;
 
     @Value("${egov.user.create.path}")
-    private String userCreateEndpoint;
+    private String userCreationEndpoint;
 
     @Value("${egov.user.search.path}")
-    private String userSearchEndpoint;
+    private String userLookupEndpoint;
 
     @Value("${egov.user.update.path}")
-    private String userUpdateEndpoint;
+    private String userModificationEndpoint;
 
-
-    //Idgen Config
+    // ID Generation service configuration
     @Value("${egov.idgen.host}")
-    private String idGenHost;
+    private String idGenerationHost;
 
     @Value("${egov.idgen.path}")
-    private String idGenPath;
+    private String idGenerationPath;
 
-
-    //Workflow Config
+    // Workflow management configuration
     @Value("${egov.workflow.host}")
-    private String wfHost;
+    private String workflowServiceHost;
 
     @Value("${egov.workflow.transition.path}")
-    private String wfTransitionPath;
+    private String workflowTransitionEndpoint;
 
     @Value("${egov.workflow.businessservice.search.path}")
-    private String wfBusinessServiceSearchPath;
+    private String workflowBusinessServiceLookupPath;
 
     @Value("${egov.workflow.processinstance.search.path}")
-    private String wfProcessInstanceSearchPath;
+    private String workflowInstanceSearchPath;
 
-
-    //MDMS
+    // Master Data Management System configuration
     @Value("${egov.mdms.host}")
-    private String mdmsHost;
+    private String masterDataServiceHost;
 
     @Value("${egov.mdms.search.endpoint}")
-    private String mdmsEndPoint;
+    private String masterDataLookupEndpoint;
 
-
-    //HRMS
+    // Human Resource Management System integration
     @Value("${egov.hrms.host}")
-    private String hrmsHost;
+    private String humanResourceServiceBaseUrl;
 
     @Value("${egov.hrms.search.endpoint}")
-    private String hrmsEndPoint;
+    private String employeeSearchEndpoint;
 
-
-    //URLShortening
+    // URL Shortening service configuration
     @Value("${egov.url.shortner.host}")
-    private String urlShortnerHost;
+    private String urlCompressionServiceHost;
 
     @Value("${egov.url.shortner.endpoint}")
-    private String urlShortnerEndpoint;
+    private String urlCompressionEndpoint;
 
-
-    //SMSNotification
+    // Notification service configuration
     @Value("${egov.sms.notification.topic}")
-    private String smsNotificationTopic;
+    private String notificationServiceTopic;
 }
